@@ -8,7 +8,7 @@ const PieDePagina = () => {
             <div className="pie-contenedor">
                 <div className="pie-enlaces">
                     <a
-                        href="https://github.com/FernandezMarcodev/ExpoUno"
+                        href="https://github.com/fefe08x/ConciertosFinder"
                         target="_blank"
                         rel="noopener noreferrer"
                     >
