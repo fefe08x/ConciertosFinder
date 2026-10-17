@@ -3,6 +3,7 @@ requests
 python-dateutil
 flask
 flask_sqlalchemy
+sqlalchemy<2.1
 geoalchemy2
 shapely
 psycopg2-binary

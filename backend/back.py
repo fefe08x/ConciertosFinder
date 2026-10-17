@@ -54,7 +54,7 @@ DB_PASSWORD = os.getenv("DB_PASSWORD", "conciertos")
 DB_SSLMODE = os.getenv("DB_SSLMODE", "")
 
 app.config['SQLALCHEMY_DATABASE_URI'] = (
-    f"postgresql://{DB_USER}:{quote_plus(DB_PASSWORD)}@"
+    f"postgresql+psycopg2://{DB_USER}:{quote_plus(DB_PASSWORD)}@"
     f"{DB_HOST}:{DB_PORT}/{DB_NAME}"
 )
 if DB_SSLMODE:
