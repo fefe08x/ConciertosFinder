@@ -1,0 +1,19 @@
+name: Keep-alive backend
+
+on:
+  schedule:
+    - cron: "*/10 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Ping Render API
+        run: |
+          curl -fsS --max-time 100 --retry 2 "https://expouno-api.onrender.com/health" -o /dev/null
+          echo "Backend respondio OK"

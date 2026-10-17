@@ -1,0 +1,25 @@
+name: Keep workflows alive
+
+on:
+  schedule:
+    - cron: "0 0 1 * *"
+  workflow_dispatch:
+
+permissions:
+  actions: write
+  contents: read
+
+jobs:
+  enable:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Re-habilitar workflows desactivados
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          gh workflow list --all --json name --jq '.[].name' | while IFS= read -r name; do
+            gh workflow enable "$name" || true
+          done
+          echo "Workflows re-habilitados"
